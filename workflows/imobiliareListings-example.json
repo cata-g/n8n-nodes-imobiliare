@@ -1,0 +1,106 @@
+{
+  "name": "Imobiliare new-listing monitor (example)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 2
+            }
+          ]
+        }
+      },
+      "id": "a1b2c3d4-0001-4a1a-8a01-000000000001",
+      "name": "Every 2 hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "searchUrl": "https://www.imobiliare.ro/vanzare-apartamente/cluj-napoca?nr-camere=2",
+        "maxResults": 50,
+        "onlyNew": true
+      },
+      "id": "a1b2c3d4-0002-4a1a-8a01-000000000002",
+      "name": "New 2-room apartments (Cluj)",
+      "type": "n8n-nodes-imobiliare.imobiliareListings",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a1b2c3d4-0003-4a1a-8a01-000000000003",
+      "name": "Telegram message (add Telegram)",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        700,
+        300
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a1b2c3d4-0004-4a1a-8a01-000000000004",
+      "name": "Log to sheet (add Google Sheets)",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        920,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Every 2 hours": {
+      "main": [
+        [
+          {
+            "node": "New 2-room apartments (Cluj)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New 2-room apartments (Cluj)": {
+      "main": [
+        [
+          {
+            "node": "Telegram message (add Telegram)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram message (add Telegram)": {
+      "main": [
+        [
+          {
+            "node": "Log to sheet (add Google Sheets)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [],
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

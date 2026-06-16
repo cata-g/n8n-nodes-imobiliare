@@ -1,0 +1,59 @@
+{
+  "name": "n8n-nodes-imobiliare",
+  "version": "0.1.0",
+  "description": "n8n community node for monitoring imobiliare.ro property listings",
+  "keywords": [
+    "n8n-community-node-package",
+    "imobiliare", "real-estate", "property", "romania", "listings"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/cata-g/n8n-nodes-imobiliare",
+  "author": {
+    "name": "Catalin Barabas",
+    "email": "barabas.catalin@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cata-g/n8n-nodes-imobiliare"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && npm run copy-icons",
+    "copy-icons": "copyfiles \"nodes/**/*.svg\" dist",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "format": "prettier nodes --write",
+    "lint": "eslint nodes package.json",
+    "lintfix": "eslint nodes package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [],
+    "nodes": [
+      "dist/nodes/ImobiliareListings/ImobiliareListings.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.57.1",
+    "eslint-plugin-n8n-nodes-base": "^1.16.6",
+    "jest": "^30.4.2",
+    "n8n-workflow": "*",
+    "prettier": "^3.8.4",
+    "ts-jest": "^29.4.11",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  }
+}
