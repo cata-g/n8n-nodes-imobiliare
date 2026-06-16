@@ -1,8 +1,16 @@
 # n8n-nodes-imobiliare
 
+![npm version](https://img.shields.io/npm/v/n8n-nodes-imobiliare.svg)
+![n8n community node](https://img.shields.io/badge/n8n-community%20node-EA4B71.svg)
+![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
+![Tests](https://img.shields.io/badge/tests-14%20passing-brightgreen.svg)
+![imobiliare.ro](https://img.shields.io/badge/imobiliare.ro-listings-orange.svg)
+
 Community [n8n](https://n8n.io) node for **imobiliare.ro**, Romania's largest real-estate
 portal. Search property listings and detect new ones or price drops automatically — for
 investors, buyers, and agents who otherwise refresh the site by hand. No API key.
+
+![Imobiliare Listings node in n8n — Search Listings returning parsed property cards](docs/screenshots/imobiliareListings-node.png)
 
 ## Nodes
 
